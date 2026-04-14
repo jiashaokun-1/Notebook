@@ -1,0 +1,33 @@
+repos:
+  - repo: local
+    hooks:
+      - id: run-build
+        name: Run Release Build
+        entry: bash build.sh
+        language: system
+        pass_filenames: false
+        files: ^(?!test/).*(\.(h|c|cpp|sh|cmake)|CMakeLists\.txt)$
+      - id: run-build-test
+        name: Run Tests Build
+        entry: bash build.sh test --skip-run-tests
+        language: system
+        pass_filenames: false
+        files: ^test/.*\.(h|c|cpp|sh|cmake)$|^test/CMakeLists\.txt$
+      - id: clang-format
+        name: Run clang-format check
+        entry: clang-format
+        language: system
+        files: \.(h|c|cpp)$
+        args: [-style=file, -i]
+      - id: clang-tidy
+        name: Run clang-tidy check
+        entry: clang-tidy
+        language: system
+        files: ^(?!test/).*\.(h|c|cpp)$
+        args: [-p=cmake-build-release, -header-filter=.*, --fix]
+      - id: clang-tidy-test
+        name: Run clang-tidy check for test files
+        entry: clang-tidy
+        language: system
+        files: ^test/.*\.(h|c|cpp)$
+        args: [-p=cmake-build-debug, --fix]
