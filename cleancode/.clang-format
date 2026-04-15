@@ -76,8 +76,8 @@ DerivePointerAlignment: false # 不自动推导对齐方式
 
 # --- Include 管理 ---
 IncludeBlocks: Preserve       # 保持include块原样，不自动重排
-SortIncludes: false           # 不自动排序include，避免破坏依赖顺序
-SortUsingDeclarations: false  # 不自动排序using声明
+SortIncludes: true           # 不自动排序include，避免破坏依赖顺序
+SortUsingDeclarations: true  # 不自动排序using声明
 IncludeCategories:
   - Regex: '<.*\.h>'
     Priority: 1
