@@ -1,0 +1,4045 @@
+{
+  "model": "deepseek-v4-pro",
+  "hardware": "Adevice03_POD",
+  "quant": "attn/shared=fp8, routed=fp4, activation/kv=fp8",
+  "generated_at": "2026-09-04T12:21:29+0800",
+  "results": [
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 1,
+      "ep_size": 1,
+      "dp_size": 1,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "24",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=1 | MOE EP=1 · PP=1",
+      "tpot_ms": 686.32,
+      "tps": 186.5,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 916.903644037,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 0.0,
+        "communication_percent": 0.0,
+        "compute_ms": 5.73894,
+        "compute_percent": 0.84,
+        "memory_ms": 680.583318,
+        "memory_percent": 99.16,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 899247267840,
+      "rank_kv_cache_bytes": 12252736389,
+      "rank_peak_accounted_hbm_bytes": 911553558405,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 0.0,
+          "num_calls": 61,
+          "avg_cost_us": 0.0
+        },
+        "MoECombine": {
+          "total_cost_us": 0.0,
+          "num_calls": 61,
+          "avg_cost_us": 0.0
+        },
+        "GroupMatMul": {
+          "total_cost_us": 649450.32,
+          "num_calls": 122,
+          "avg_cost_us": 5323.36
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 6357.34,
+          "num_calls": 61,
+          "avg_cost_us": 104.22
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 9157.15,
+          "num_calls": 61,
+          "avg_cost_us": 150.12
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 0.0,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              128,
+              1,
+              7168
+            ],
+            [
+              128,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              128,
+              1,
+              7168
+            ],
+            [
+              128,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 0.0,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              6,
+              128,
+              1,
+              7168
+            ],
+            [
+              128,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              128,
+              1,
+              7168
+            ],
+            [
+              128,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 21293.46,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              768,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              768,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": []
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 2,
+      "ep_size": 2,
+      "dp_size": 2,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "26",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=2 | MOE EP=2 · PP=1",
+      "tpot_ms": 358.27,
+      "tps": 178.63,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 475.55463315400004,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 2.62544,
+        "communication_percent": 0.73,
+        "compute_ms": 2.870127,
+        "compute_percent": 0.8,
+        "memory_ms": 352.779438,
+        "memory_percent": 98.47,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 464042090496,
+      "rank_kv_cache_bytes": 6126368194,
+      "rank_peak_accounted_hbm_bytes": 470195235778,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 1078.48,
+          "num_calls": 61,
+          "avg_cost_us": 17.68
+        },
+        "MoECombine": {
+          "total_cost_us": 1546.96,
+          "num_calls": 61,
+          "avg_cost_us": 25.36
+        },
+        "GroupMatMul": {
+          "total_cost_us": 324786.16,
+          "num_calls": 122,
+          "avg_cost_us": 2662.18
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5952.27,
+          "num_calls": 61,
+          "avg_cost_us": 97.58
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8924.82,
+          "num_calls": 61,
+          "avg_cost_us": 146.31
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 35.36,
+        "template_comm_us": 19.36,
+        "template_comm_bytes": 5505024,
+        "template_payload_bytes": 5505024,
+        "group_sizes": [
+          2
+        ],
+        "pricing_modes": [
+          "flat_single_tier"
+        ],
+        "bound_tiers": [
+          "bwsio"
+        ],
+        "input_shapes": [
+          [
+            [
+              64,
+              1,
+              7168
+            ],
+            [
+              64,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              64,
+              1,
+              7168
+            ],
+            [
+              64,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 50.72,
+        "template_comm_us": 34.72,
+        "template_comm_bytes": 11010048,
+        "template_payload_bytes": 11010048,
+        "group_sizes": [
+          2
+        ],
+        "pricing_modes": [
+          "flat_single_tier"
+        ],
+        "bound_tiers": [
+          "bwsio"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              64,
+              1,
+              7168
+            ],
+            [
+              64,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              64,
+              1,
+              7168
+            ],
+            [
+              64,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 10648.72,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              384,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              384,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 54.08,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "bwsio"
+        }
+      ]
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 4,
+      "ep_size": 4,
+      "dp_size": 4,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "28",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=4 | MOE EP=4 · PP=1",
+      "tpot_ms": 191.95,
+      "tps": 166.71,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 254.880127713,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.621554,
+        "communication_percent": 0.84,
+        "compute_ms": 1.585063,
+        "compute_percent": 0.83,
+        "memory_ms": 188.746127,
+        "memory_percent": 98.33,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 246439501824,
+      "rank_kv_cache_bytes": 3063184097,
+      "rank_peak_accounted_hbm_bytes": 249516074465,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 743.85,
+          "num_calls": 61,
+          "avg_cost_us": 12.19
+        },
+        "MoECombine": {
+          "total_cost_us": 877.7,
+          "num_calls": 61,
+          "avg_cost_us": 14.39
+        },
+        "GroupMatMul": {
+          "total_cost_us": 162454.08,
+          "num_calls": 122,
+          "avg_cost_us": 1331.59
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5749.73,
+          "num_calls": 61,
+          "avg_cost_us": 94.26
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8808.66,
+          "num_calls": 61,
+          "avg_cost_us": 144.4
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 24.38,
+        "template_comm_us": 8.38,
+        "template_comm_bytes": 4128768,
+        "template_payload_bytes": 2752512,
+        "group_sizes": [
+          4
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              32,
+              1,
+              7168
+            ],
+            [
+              32,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              32,
+              1,
+              7168
+            ],
+            [
+              32,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 28.78,
+        "template_comm_us": 12.78,
+        "template_comm_bytes": 8257536,
+        "template_payload_bytes": 5505024,
+        "group_sizes": [
+          4
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              32,
+              1,
+              7168
+            ],
+            [
+              32,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              32,
+              1,
+              7168
+            ],
+            [
+              32,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 5326.36,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              192,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              192,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 21.165714,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 8,
+      "ep_size": 8,
+      "dp_size": 8,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "30",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=8 | MOE EP=8 · PP=1",
+      "tpot_ms": 108.99,
+      "tps": 146.8,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 144.542874992,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.320389,
+        "communication_percent": 1.21,
+        "compute_ms": 0.942532,
+        "compute_percent": 0.86,
+        "memory_ms": 106.729471,
+        "memory_percent": 97.93,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 137638207488,
+      "rank_kv_cache_bytes": 1531592048,
+      "rank_peak_accounted_hbm_bytes": 139176493808,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 643.46,
+          "num_calls": 61,
+          "avg_cost_us": 10.55
+        },
+        "MoECombine": {
+          "total_cost_us": 676.93,
+          "num_calls": 61,
+          "avg_cost_us": 11.1
+        },
+        "GroupMatMul": {
+          "total_cost_us": 81288.04,
+          "num_calls": 122,
+          "avg_cost_us": 666.3
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5648.46,
+          "num_calls": 61,
+          "avg_cost_us": 92.6
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8750.58,
+          "num_calls": 61,
+          "avg_cost_us": 143.45
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 21.1,
+        "template_comm_us": 5.1,
+        "template_comm_bytes": 2408448,
+        "template_payload_bytes": 1376256,
+        "group_sizes": [
+          8
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              16,
+              1,
+              7168
+            ],
+            [
+              16,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              16,
+              1,
+              7168
+            ],
+            [
+              16,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 22.2,
+        "template_comm_us": 6.2,
+        "template_comm_bytes": 4816896,
+        "template_payload_bytes": 2752512,
+        "group_sizes": [
+          8
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              16,
+              1,
+              7168
+            ],
+            [
+              16,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              16,
+              1,
+              7168
+            ],
+            [
+              16,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 2665.18,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              96,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              96,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 11.291428,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 16,
+      "ep_size": 16,
+      "dp_size": 16,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "32",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=16 | MOE EP=16 · PP=1",
+      "tpot_ms": 67.59,
+      "tps": 118.37,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 89.374248632,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.245097,
+        "communication_percent": 1.84,
+        "compute_ms": 0.621266,
+        "compute_percent": 0.92,
+        "memory_ms": 65.721143,
+        "memory_percent": 97.24,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 83237560320,
+      "rank_kv_cache_bytes": 765796024,
+      "rank_peak_accounted_hbm_bytes": 84006703480,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 618.37,
+          "num_calls": 61,
+          "avg_cost_us": 10.14
+        },
+        "MoECombine": {
+          "total_cost_us": 626.73,
+          "num_calls": 61,
+          "avg_cost_us": 10.27
+        },
+        "GroupMatMul": {
+          "total_cost_us": 40705.02,
+          "num_calls": 122,
+          "avg_cost_us": 333.65
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5597.82,
+          "num_calls": 61,
+          "avg_cost_us": 91.77
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8721.54,
+          "num_calls": 61,
+          "avg_cost_us": 142.98
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.28,
+        "template_comm_us": 4.28,
+        "template_comm_bytes": 1290240,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          16
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              8,
+              1,
+              7168
+            ],
+            [
+              8,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              8,
+              1,
+              7168
+            ],
+            [
+              8,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.54,
+        "template_comm_us": 4.54,
+        "template_comm_bytes": 2580480,
+        "template_payload_bytes": 1376256,
+        "group_sizes": [
+          16
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              8,
+              1,
+              7168
+            ],
+            [
+              8,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              8,
+              1,
+              7168
+            ],
+            [
+              8,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 1334.58,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              48,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              48,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.822858,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 32,
+      "ep_size": 32,
+      "dp_size": 32,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "34",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=32 | MOE EP=32 · PP=1",
+      "tpot_ms": 46.9,
+      "tps": 85.28,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 61.789935452,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 1.226274,
+        "communication_percent": 2.61,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.98,
+        "memory_ms": 45.216979,
+        "memory_percent": 96.41,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 56037236736,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 56421808316,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 612.09,
+          "num_calls": 61,
+          "avg_cost_us": 10.03
+        },
+        "MoECombine": {
+          "total_cost_us": 614.18,
+          "num_calls": 61,
+          "avg_cost_us": 10.07
+        },
+        "GroupMatMul": {
+          "total_cost_us": 20413.51,
+          "num_calls": 122,
+          "avg_cost_us": 167.32
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.06,
+        "template_comm_us": 4.06,
+        "template_comm_bytes": 666624,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          32
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.14,
+        "template_comm_us": 4.14,
+        "template_comm_bytes": 1333248,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          32
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 669.3,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.205714,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 64,
+      "ep_size": 64,
+      "dp_size": 64,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "36",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=64 | MOE EP=64 · PP=1",
+      "tpot_ms": 36.57,
+      "tps": 54.7,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 47.997778862000004,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 1.221569,
+        "communication_percent": 3.34,
+        "compute_ms": 0.380316,
+        "compute_percent": 1.04,
+        "memory_ms": 34.964897,
+        "memory_percent": 95.62,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 42437074944,
+      "rank_kv_cache_bytes": 191449006,
+      "rank_peak_accounted_hbm_bytes": 42629360734,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 610.52,
+          "num_calls": 61,
+          "avg_cost_us": 10.01
+        },
+        "MoECombine": {
+          "total_cost_us": 611.05,
+          "num_calls": 61,
+          "avg_cost_us": 10.02
+        },
+        "GroupMatMul": {
+          "total_cost_us": 10267.76,
+          "num_calls": 122,
+          "avg_cost_us": 84.16
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5559.85,
+          "num_calls": 61,
+          "avg_cost_us": 91.15
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8699.76,
+          "num_calls": 61,
+          "avg_cost_us": 142.62
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.02,
+        "template_comm_us": 4.02,
+        "template_comm_bytes": 338688,
+        "template_payload_bytes": 172032,
+        "group_sizes": [
+          64
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              2,
+              1,
+              7168
+            ],
+            [
+              2,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              7168
+            ],
+            [
+              2,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.04,
+        "template_comm_us": 4.04,
+        "template_comm_bytes": 677376,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          64
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              2,
+              1,
+              7168
+            ],
+            [
+              2,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              2,
+              1,
+              7168
+            ],
+            [
+              2,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 336.64,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              12,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              12,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.051428,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    },
+    {
+      "series": "decode_strong",
+      "phase": "decode",
+      "world_size": 128,
+      "ep_size": 128,
+      "dp_size": 128,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "38",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=128 | MOE EP=128 · PP=1",
+      "tpot_ms": 31.4,
+      "tps": 31.85,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 41.101700567,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 1.220392,
+        "communication_percent": 3.89,
+        "compute_ms": 0.340158,
+        "compute_percent": 1.08,
+        "memory_ms": 29.838856,
+        "memory_percent": 95.03,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 35636994048,
+      "rank_kv_cache_bytes": 95724503,
+      "rank_peak_accounted_hbm_bytes": 35733136943,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 610.13,
+          "num_calls": 61,
+          "avg_cost_us": 10.0
+        },
+        "MoECombine": {
+          "total_cost_us": 610.26,
+          "num_calls": 61,
+          "avg_cost_us": 10.0
+        },
+        "GroupMatMul": {
+          "total_cost_us": 5194.88,
+          "num_calls": 122,
+          "avg_cost_us": 42.58
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5553.52,
+          "num_calls": 61,
+          "avg_cost_us": 91.04
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8696.13,
+          "num_calls": 61,
+          "avg_cost_us": 142.56
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.0,
+        "template_comm_us": 4.0,
+        "template_comm_bytes": 170688,
+        "template_payload_bytes": 86016,
+        "group_sizes": [
+          128
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              1,
+              1,
+              7168
+            ],
+            [
+              1,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              1,
+              1,
+              7168
+            ],
+            [
+              1,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.0,
+        "template_comm_us": 4.0,
+        "template_comm_bytes": 341376,
+        "template_payload_bytes": 172032,
+        "group_sizes": [
+          128
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              1,
+              1,
+              7168
+            ],
+            [
+              1,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              1,
+              1,
+              7168
+            ],
+            [
+              1,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 170.32,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              6,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              6,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.012858,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 1,
+      "ep_size": 1,
+      "dp_size": 1,
+      "batch_size": 4,
+      "input_length": 8192,
+      "run_id": "25",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=1 | MOE EP=1 · PP=1",
+      "tpot_ms": 673.92,
+      "tps": 5.94,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 904.999966556,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 0.0,
+        "communication_percent": 0.0,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.07,
+        "memory_ms": 673.457409,
+        "memory_percent": 99.93,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 899247267840,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 899631839420,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 0.0,
+          "num_calls": 61,
+          "avg_cost_us": 0.0
+        },
+        "MoECombine": {
+          "total_cost_us": 0.0,
+          "num_calls": 61,
+          "avg_cost_us": 0.0
+        },
+        "GroupMatMul": {
+          "total_cost_us": 648653.94,
+          "num_calls": 122,
+          "avg_cost_us": 5316.84
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 0.0,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 0.0,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 21267.34,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": []
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 2,
+      "ep_size": 2,
+      "dp_size": 2,
+      "batch_size": 8,
+      "input_length": 8192,
+      "run_id": "27",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=2 | MOE EP=2 · PP=1",
+      "tpot_ms": 350.97,
+      "tps": 11.4,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 469.794789212,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.30784,
+        "communication_percent": 0.37,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.13,
+        "memory_ms": 349.204284,
+        "memory_percent": 99.5,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 464042090496,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 464426662076,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 639.28,
+          "num_calls": 61,
+          "avg_cost_us": 10.48
+        },
+        "MoECombine": {
+          "total_cost_us": 668.56,
+          "num_calls": 61,
+          "avg_cost_us": 10.96
+        },
+        "GroupMatMul": {
+          "total_cost_us": 324400.81,
+          "num_calls": 122,
+          "avg_cost_us": 2659.02
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.96,
+        "template_comm_us": 4.96,
+        "template_comm_bytes": 344064,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          2
+        ],
+        "pricing_modes": [
+          "flat_single_tier"
+        ],
+        "bound_tiers": [
+          "bwsio"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 21.92,
+        "template_comm_us": 5.92,
+        "template_comm_bytes": 688128,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          2
+        ],
+        "pricing_modes": [
+          "flat_single_tier"
+        ],
+        "bound_tiers": [
+          "bwsio"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 10636.1,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 10.88,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "bwsio"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 4,
+      "ep_size": 4,
+      "dp_size": 4,
+      "batch_size": 16,
+      "input_length": 8192,
+      "run_id": "29",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=4 | MOE EP=4 · PP=1",
+      "tpot_ms": 188.81,
+      "tps": 21.19,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 252.19220054000002,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.270194,
+        "communication_percent": 0.67,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.24,
+        "memory_ms": 187.077721,
+        "memory_percent": 99.09,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 246439501824,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 246824073404,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 626.73,
+          "num_calls": 61,
+          "avg_cost_us": 10.27
+        },
+        "MoECombine": {
+          "total_cost_us": 643.46,
+          "num_calls": 61,
+          "avg_cost_us": 10.55
+        },
+        "GroupMatMul": {
+          "total_cost_us": 162274.25,
+          "num_calls": 122,
+          "avg_cost_us": 1330.12
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.54,
+        "template_comm_us": 4.54,
+        "template_comm_bytes": 516096,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          4
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 21.1,
+        "template_comm_us": 5.1,
+        "template_comm_bytes": 1032192,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          4
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 5320.46,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 9.645714,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 8,
+      "ep_size": 8,
+      "dp_size": 8,
+      "batch_size": 32,
+      "input_length": 8192,
+      "run_id": "31",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=8 | MOE EP=8 · PP=1",
+      "tpot_ms": 107.72,
+      "tps": 37.13,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 143.390906204,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.245097,
+        "communication_percent": 1.16,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.43,
+        "memory_ms": 106.01444,
+        "memory_percent": 98.41,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 137638207488,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 138022779068,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 618.37,
+          "num_calls": 61,
+          "avg_cost_us": 10.14
+        },
+        "MoECombine": {
+          "total_cost_us": 626.73,
+          "num_calls": 61,
+          "avg_cost_us": 10.27
+        },
+        "GroupMatMul": {
+          "total_cost_us": 81210.97,
+          "num_calls": 122,
+          "avg_cost_us": 665.66
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.28,
+        "template_comm_us": 4.28,
+        "template_comm_bytes": 602112,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          8
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.54,
+        "template_comm_us": 4.54,
+        "template_comm_bytes": 1204224,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          8
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 2662.66,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.822858,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 16,
+      "ep_size": 16,
+      "dp_size": 16,
+      "batch_size": 64,
+      "input_length": 8192,
+      "run_id": "33",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=16 | MOE EP=16 · PP=1",
+      "tpot_ms": 67.18,
+      "tps": 59.55,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 88.99025903600001,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 1.232549,
+        "communication_percent": 1.83,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.69,
+        "memory_ms": 65.482799,
+        "memory_percent": 97.48,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 83237560320,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 83622131900,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 614.18,
+          "num_calls": 61,
+          "avg_cost_us": 10.07
+        },
+        "MoECombine": {
+          "total_cost_us": 618.37,
+          "num_calls": 61,
+          "avg_cost_us": 10.14
+        },
+        "GroupMatMul": {
+          "total_cost_us": 40679.33,
+          "num_calls": 122,
+          "avg_cost_us": 333.44
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.14,
+        "template_comm_us": 4.14,
+        "template_comm_bytes": 645120,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          16
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.28,
+        "template_comm_us": 4.28,
+        "template_comm_bytes": 1290240,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          16
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 1333.76,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.411428,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 32,
+      "ep_size": 32,
+      "dp_size": 32,
+      "batch_size": 128,
+      "input_length": 8192,
+      "run_id": "35",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=32 | MOE EP=32 · PP=1",
+      "tpot_ms": 46.9,
+      "tps": 85.28,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 61.789935452,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 1.226274,
+        "communication_percent": 2.61,
+        "compute_ms": 0.460633,
+        "compute_percent": 0.98,
+        "memory_ms": 45.216979,
+        "memory_percent": 96.41,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 56037236736,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 56421808316,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 612.09,
+          "num_calls": 61,
+          "avg_cost_us": 10.03
+        },
+        "MoECombine": {
+          "total_cost_us": 614.18,
+          "num_calls": 61,
+          "avg_cost_us": 10.07
+        },
+        "GroupMatMul": {
+          "total_cost_us": 20413.51,
+          "num_calls": 122,
+          "avg_cost_us": 167.32
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.06,
+        "template_comm_us": 4.06,
+        "template_comm_bytes": 666624,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          32
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.14,
+        "template_comm_us": 4.14,
+        "template_comm_bytes": 1333248,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          32
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 669.3,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.205714,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 64,
+      "ep_size": 64,
+      "dp_size": 64,
+      "batch_size": 256,
+      "input_length": 8192,
+      "run_id": "37",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=64 | MOE EP=64 · PP=1",
+      "tpot_ms": 36.77,
+      "tps": 108.79,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 48.18977366,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 1.223137,
+        "communication_percent": 3.33,
+        "compute_ms": 0.460633,
+        "compute_percent": 1.25,
+        "memory_ms": 35.084069,
+        "memory_percent": 95.42,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 42437074944,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 42821646524,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 611.05,
+          "num_calls": 61,
+          "avg_cost_us": 10.02
+        },
+        "MoECombine": {
+          "total_cost_us": 612.09,
+          "num_calls": 61,
+          "avg_cost_us": 10.03
+        },
+        "GroupMatMul": {
+          "total_cost_us": 10280.6,
+          "num_calls": 122,
+          "avg_cost_us": 84.27
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.04,
+        "template_comm_us": 4.04,
+        "template_comm_bytes": 677376,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          64
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.06,
+        "template_comm_us": 4.06,
+        "template_comm_bytes": 1354752,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          64
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 337.06,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.102858,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    },
+    {
+      "series": "decode_weak",
+      "phase": "decode",
+      "world_size": 128,
+      "ep_size": 128,
+      "dp_size": 128,
+      "batch_size": 512,
+      "input_length": 8192,
+      "run_id": "39",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=128 | MOE EP=128 · PP=1",
+      "tpot_ms": 31.7,
+      "tps": 126.19,
+      "tps_p": 0.0,
+      "prefill_latency_ms": 0.0,
+      "peak_mem_gb": 41.389692764,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 1.221569,
+        "communication_percent": 3.85,
+        "compute_ms": 0.460633,
+        "compute_percent": 1.45,
+        "memory_ms": 30.017614,
+        "memory_percent": 94.7,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 35636994048,
+      "rank_kv_cache_bytes": 382898012,
+      "rank_peak_accounted_hbm_bytes": 36021565628,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 610.52,
+          "num_calls": 61,
+          "avg_cost_us": 10.01
+        },
+        "MoECombine": {
+          "total_cost_us": 611.05,
+          "num_calls": 61,
+          "avg_cost_us": 10.02
+        },
+        "GroupMatMul": {
+          "total_cost_us": 5214.14,
+          "num_calls": 122,
+          "avg_cost_us": 42.74
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 5572.5,
+          "num_calls": 61,
+          "avg_cost_us": 91.35
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 8707.02,
+          "num_calls": 61,
+          "avg_cost_us": 142.74
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 20.02,
+        "template_comm_us": 4.02,
+        "template_comm_bytes": 682752,
+        "template_payload_bytes": 344064,
+        "group_sizes": [
+          128
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 20.04,
+        "template_comm_us": 4.04,
+        "template_comm_bytes": 1365504,
+        "template_payload_bytes": 688128,
+        "group_sizes": [
+          128
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              1,
+              7168
+            ],
+            [
+              4,
+              1,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 170.96,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 8.051428,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    },
+    {
+      "series": "prefill_strong",
+      "phase": "prefill",
+      "world_size": 1,
+      "ep_size": 1,
+      "dp_size": 1,
+      "batch_size": 32,
+      "input_length": 2048,
+      "run_id": "40",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=1 | MOE EP=1 · PP=1",
+      "tpot_ms": 0.0,
+      "tps": 3514.61,
+      "tps_p": 3514.61,
+      "prefill_latency_ms": 18646.74,
+      "peak_mem_gb": 915.075900047,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 0.0,
+        "communication_percent": 0.0,
+        "compute_ms": 16663.103107,
+        "compute_percent": 89.36,
+        "memory_ms": 1983.633181,
+        "memory_percent": 10.64,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 899247267840,
+      "rank_kv_cache_bytes": 720749199,
+      "rank_peak_accounted_hbm_bytes": 910442766991,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 0.0,
+          "num_calls": 61,
+          "avg_cost_us": 0.0
+        },
+        "MoECombine": {
+          "total_cost_us": 0.0,
+          "num_calls": 61,
+          "avg_cost_us": 0.0
+        },
+        "GroupMatMul": {
+          "total_cost_us": 7460261.8,
+          "num_calls": 122,
+          "avg_cost_us": 61149.69
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 2171245.15,
+          "num_calls": 61,
+          "avg_cost_us": 35594.18
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 3473809.25,
+          "num_calls": 61,
+          "avg_cost_us": 56947.69
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 0.0,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              32,
+              2048,
+              7168
+            ],
+            [
+              32,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              32,
+              2048,
+              7168
+            ],
+            [
+              32,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 0.0,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              6,
+              32,
+              2048,
+              7168
+            ],
+            [
+              32,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              32,
+              2048,
+              7168
+            ],
+            [
+              32,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 244598.74,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              393216,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              393216,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": []
+    },
+    {
+      "series": "prefill_strong",
+      "phase": "prefill",
+      "world_size": 2,
+      "ep_size": 2,
+      "dp_size": 2,
+      "batch_size": 32,
+      "input_length": 2048,
+      "run_id": "41",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=2 | MOE EP=2 · PP=1",
+      "tpot_ms": 0.0,
+      "tps": 3261.33,
+      "tps_p": 3261.33,
+      "prefill_latency_ms": 10047.44,
+      "peak_mem_gb": 474.640761159,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 720.80528,
+        "communication_percent": 7.17,
+        "compute_ms": 8332.749053,
+        "compute_percent": 82.94,
+        "memory_ms": 993.889039,
+        "memory_percent": 9.89,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 464042090496,
+      "rank_kv_cache_bytes": 360374599,
+      "rank_peak_accounted_hbm_bytes": 469639840071,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 240471.76,
+          "num_calls": 61,
+          "avg_cost_us": 3942.16
+        },
+        "MoECombine": {
+          "total_cost_us": 480333.52,
+          "num_calls": 61,
+          "avg_cost_us": 7874.32
+        },
+        "GroupMatMul": {
+          "total_cost_us": 3730191.9,
+          "num_calls": 122,
+          "avg_cost_us": 30575.34
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 1085775.08,
+          "num_calls": 61,
+          "avg_cost_us": 17799.59
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 1737057.12,
+          "num_calls": 61,
+          "avg_cost_us": 28476.35
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 7884.32,
+        "template_comm_us": 7868.32,
+        "template_comm_bytes": 2818572288,
+        "template_payload_bytes": 2818572288,
+        "group_sizes": [
+          2
+        ],
+        "pricing_modes": [
+          "flat_single_tier"
+        ],
+        "bound_tiers": [
+          "bwsio"
+        ],
+        "input_shapes": [
+          [
+            [
+              16,
+              2048,
+              7168
+            ],
+            [
+              16,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              16,
+              2048,
+              7168
+            ],
+            [
+              16,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 15748.64,
+        "template_comm_us": 15732.64,
+        "template_comm_bytes": 5637144576,
+        "template_payload_bytes": 5637144576,
+        "group_sizes": [
+          2
+        ],
+        "pricing_modes": [
+          "flat_single_tier"
+        ],
+        "bound_tiers": [
+          "bwsio"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              16,
+              2048,
+              7168
+            ],
+            [
+              16,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              16,
+              2048,
+              7168
+            ],
+            [
+              16,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 122301.38,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              196608,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              196608,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 23600.96,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "bwsio"
+        }
+      ]
+    },
+    {
+      "series": "prefill_strong",
+      "phase": "prefill",
+      "world_size": 4,
+      "ep_size": 4,
+      "dp_size": 4,
+      "batch_size": 32,
+      "input_length": 2048,
+      "run_id": "42",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=4 | MOE EP=4 · PP=1",
+      "tpot_ms": 0.0,
+      "tps": 3361.92,
+      "tps_p": 3361.92,
+      "prefill_latency_ms": 4873.4,
+      "peak_mem_gb": 254.42319171500003,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 206.815794,
+        "communication_percent": 4.24,
+        "compute_ms": 4167.572027,
+        "compute_percent": 85.52,
+        "memory_ms": 499.016968,
+        "memory_percent": 10.24,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 246439501824,
+      "rank_kv_cache_bytes": 180187299,
+      "rank_peak_accounted_hbm_bytes": 249238376611,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 69141.93,
+          "num_calls": 61,
+          "avg_cost_us": 1133.47
+        },
+        "MoECombine": {
+          "total_cost_us": 137673.86,
+          "num_calls": 61,
+          "avg_cost_us": 2256.95
+        },
+        "GroupMatMul": {
+          "total_cost_us": 1865156.95,
+          "num_calls": 122,
+          "avg_cost_us": 15288.17
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 543040.04,
+          "num_calls": 61,
+          "avg_cost_us": 8902.3
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 868681.06,
+          "num_calls": 61,
+          "avg_cost_us": 14240.67
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 2266.94,
+        "template_comm_us": 2250.94,
+        "template_comm_bytes": 2113929216,
+        "template_payload_bytes": 1409286144,
+        "group_sizes": [
+          4
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              8,
+              2048,
+              7168
+            ],
+            [
+              8,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              8,
+              2048,
+              7168
+            ],
+            [
+              8,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 4513.9,
+        "template_comm_us": 4497.9,
+        "template_comm_bytes": 4227858432,
+        "template_payload_bytes": 2818572288,
+        "group_sizes": [
+          4
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              8,
+              2048,
+              7168
+            ],
+            [
+              8,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              8,
+              2048,
+              7168
+            ],
+            [
+              8,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 61152.7,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              98304,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              98304,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 6748.845714,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "prefill_strong",
+      "phase": "prefill",
+      "world_size": 8,
+      "ep_size": 8,
+      "dp_size": 8,
+      "batch_size": 32,
+      "input_length": 2048,
+      "run_id": "43",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=8 | MOE EP=8 · PP=1",
+      "tpot_ms": 0.0,
+      "tps": 3418.65,
+      "tps_p": 3418.65,
+      "prefill_latency_ms": 2396.27,
+      "peak_mem_gb": 144.314406993,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 0.0,
+        "communication_percent": 0.0,
+        "compute_ms": 2084.983513,
+        "compute_percent": 87.01,
+        "memory_ms": 311.287303,
+        "memory_percent": 12.99,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 137638207488,
+      "rank_kv_cache_bytes": 90093649,
+      "rank_peak_accounted_hbm_bytes": 139037644881,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 21846.94,
+          "num_calls": 61,
+          "avg_cost_us": 358.15
+        },
+        "MoECombine": {
+          "total_cost_us": 37859.44,
+          "num_calls": 61,
+          "avg_cost_us": 620.65
+        },
+        "GroupMatMul": {
+          "total_cost_us": 932639.48,
+          "num_calls": 122,
+          "avg_cost_us": 7644.59
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 271672.52,
+          "num_calls": 61,
+          "avg_cost_us": 4453.65
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 434493.03,
+          "num_calls": 61,
+          "avg_cost_us": 7122.84
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 716.3,
+        "template_comm_us": 565.74,
+        "template_comm_bytes": 1233125376,
+        "template_payload_bytes": 704643072,
+        "group_sizes": [
+          8
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              4,
+              2048,
+              7168
+            ],
+            [
+              4,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              4,
+              2048,
+              7168
+            ],
+            [
+              4,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 1241.3,
+        "template_comm_us": 1127.48,
+        "template_comm_bytes": 2466250752,
+        "template_payload_bytes": 1409286144,
+        "group_sizes": [
+          8
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              4,
+              2048,
+              7168
+            ],
+            [
+              4,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              4,
+              2048,
+              7168
+            ],
+            [
+              4,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 30578.34,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              49152,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              49152,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 1693.211428,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "prefill_strong",
+      "phase": "prefill",
+      "world_size": 16,
+      "ep_size": 16,
+      "dp_size": 16,
+      "batch_size": 32,
+      "input_length": 2048,
+      "run_id": "44",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=16 | MOE EP=16 · PP=1",
+      "tpot_ms": 0.0,
+      "tps": 3407.97,
+      "tps_p": 3407.97,
+      "prefill_latency_ms": 1201.89,
+      "peak_mem_gb": 89.26001463200001,
+      "oom": true,
+      "latency_breakdown": {
+        "communication_ms": 0.0,
+        "communication_percent": 0.0,
+        "compute_ms": 1043.689257,
+        "compute_percent": 86.84,
+        "memory_ms": 158.2041,
+        "memory_percent": 13.16,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 83237560320,
+      "rank_kv_cache_bytes": 45046824,
+      "rank_peak_accounted_hbm_bytes": 83937279016,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 11167.47,
+          "num_calls": 61,
+          "avg_cost_us": 183.07
+        },
+        "MoECombine": {
+          "total_cost_us": 19173.72,
+          "num_calls": 61,
+          "avg_cost_us": 314.32
+        },
+        "GroupMatMul": {
+          "total_cost_us": 466380.74,
+          "num_calls": 122,
+          "avg_cost_us": 3822.79
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 135988.76,
+          "num_calls": 61,
+          "avg_cost_us": 2229.32
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 217399.02,
+          "num_calls": 61,
+          "avg_cost_us": 3563.92
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 366.14,
+        "template_comm_us": 144.44,
+        "template_comm_bytes": 660602880,
+        "template_payload_bytes": 352321536,
+        "group_sizes": [
+          16
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              2,
+              2048,
+              7168
+            ],
+            [
+              2,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              2,
+              2048,
+              7168
+            ],
+            [
+              2,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 628.64,
+        "template_comm_us": 284.86,
+        "template_comm_bytes": 1321205760,
+        "template_payload_bytes": 704643072,
+        "group_sizes": [
+          16
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "intra_node"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              2,
+              2048,
+              7168
+            ],
+            [
+              2,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              2,
+              2048,
+              7168
+            ],
+            [
+              2,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 15291.16,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              24576,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              24576,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 429.302858,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "intra_node"
+        }
+      ]
+    },
+    {
+      "series": "prefill_strong",
+      "phase": "prefill",
+      "world_size": 32,
+      "ep_size": 32,
+      "dp_size": 32,
+      "batch_size": 32,
+      "input_length": 2048,
+      "run_id": "45",
+      "status": "succeeded",
+      "error": null,
+      "error_info": null,
+      "strategy": "ATTN TP=1 · CP=1 · DP=32 | MOE EP=32 · PP=1",
+      "tpot_ms": 0.0,
+      "tps": 3386.8,
+      "tps_p": 3386.8,
+      "prefill_latency_ms": 604.7,
+      "peak_mem_gb": 61.732818452000004,
+      "oom": false,
+      "latency_breakdown": {
+        "communication_ms": 0.0,
+        "communication_percent": 0.0,
+        "compute_ms": 523.042128,
+        "compute_percent": 86.5,
+        "memory_ms": 81.662498,
+        "memory_percent": 13.5,
+        "rank_idx": 0
+      },
+      "rank_param_bytes": 56037236736,
+      "rank_kv_cache_bytes": 22523412,
+      "rank_peak_accounted_hbm_bytes": 56387096084,
+      "rank_capacity_bytes": 68719476736,
+      "op_statistics": {
+        "MoEDispatch": {
+          "total_cost_us": 5827.73,
+          "num_calls": 61,
+          "avg_cost_us": 95.54
+        },
+        "MoECombine": {
+          "total_cost_us": 9830.86,
+          "num_calls": 61,
+          "avg_cost_us": 161.16
+        },
+        "GroupMatMul": {
+          "total_cost_us": 233251.37,
+          "num_calls": 122,
+          "avg_cost_us": 1911.9
+        },
+        "FusedInferAttention": null,
+        "MLAPrologV4": {
+          "total_cost_us": 68146.88,
+          "num_calls": 61,
+          "avg_cost_us": 1117.16
+        },
+        "MLAEpilogV4": {
+          "total_cost_us": 108852.01,
+          "num_calls": 61,
+          "avg_cost_us": 1784.46
+        }
+      },
+      "dispatch": {
+        "template_count": 2,
+        "template_total_us": 191.08,
+        "template_comm_us": 39.1,
+        "template_comm_bytes": 341311488,
+        "template_payload_bytes": 176160768,
+        "group_sizes": [
+          32
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              1,
+              2048,
+              7168
+            ],
+            [
+              1,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              1,
+              2048,
+              7168
+            ],
+            [
+              1,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "combine": {
+        "template_count": 2,
+        "template_total_us": 322.32,
+        "template_comm_us": 74.22,
+        "template_comm_bytes": 682622976,
+        "template_payload_bytes": 352321536,
+        "group_sizes": [
+          32
+        ],
+        "pricing_modes": [
+          "fullmesh"
+        ],
+        "bound_tiers": [
+          "pod_fabric"
+        ],
+        "input_shapes": [
+          [
+            [
+              6,
+              1,
+              2048,
+              7168
+            ],
+            [
+              1,
+              2048,
+              6
+            ]
+          ],
+          [
+            [
+              6,
+              1,
+              2048,
+              7168
+            ],
+            [
+              1,
+              2048,
+              6
+            ]
+          ]
+        ]
+      },
+      "expert": {
+        "template_count": 4,
+        "template_total_us": 7647.58,
+        "template_comm_us": 0.0,
+        "template_comm_bytes": 0,
+        "template_payload_bytes": 0,
+        "group_sizes": [
+          1
+        ],
+        "pricing_modes": [
+          "none"
+        ],
+        "bound_tiers": [],
+        "input_shapes": [
+          [
+            [
+              12288,
+              1,
+              7168
+            ]
+          ],
+          [
+            [
+              12288,
+              1,
+              3072
+            ]
+          ]
+        ]
+      },
+      "comm_tier_summary": [
+        {
+          "cost_us": 113.325714,
+          "operator_count": 4,
+          "parameter_source": "native",
+          "tier_name": "pod_fabric"
+        }
+      ]
+    }
+  ]
+}
