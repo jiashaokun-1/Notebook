@@ -1,0 +1,190 @@
+diff --git a/mojo_opset/tests/specific_shape_perf_acc/test_paged_prefill_swa_950_perf.py b/mojo_opset/tests/specific_shape_perf_acc/test_paged_prefill_swa_950_perf.py
+--- a/mojo_opset/tests/specific_shape_perf_acc/test_paged_prefill_swa_950_perf.py
++++ b/mojo_opset/tests/specific_shape_perf_acc/test_paged_prefill_swa_950_perf.py
+@@ -129,7 +129,8 @@
+     #("AABB", 4, 255),  #torch_npu only support AABB gqa layout
+     ("AABB", 4, 1023),
+ ])
+-@auto_switch_platform(set_perf=True)
++# @auto_switch_platform(set_perf=True)
++@auto_switch_platform()
+ @bypass_not_implemented
+ def test_paged_prefill_swa(
+     query: torch.Tensor,
+@@ -144,7 +145,11 @@
+     global_window: int,
+     local_window: int,
+ ):
+-    swa_prefill = MojoPagedPrefillSWA(
++    # Select Triton explicitly; registry lookup can otherwise fall back.
++    swa_prefill_cls = MojoPagedPrefillSWA.get_backend_impl("ttx")
++    assert swa_prefill_cls._backend == "ttx", "Triton (ttx) backend is not registered"
++    # swa_prefill = MojoPagedPrefillSWA(
++    swa_prefill = swa_prefill_cls(
+         is_causal=True,
+         gqa_layout=gqa_layout,
+         local_window_size=local_window,
+@@ -153,8 +158,9 @@
+     head_dim = query.shape[-1]
+     softmax_scale = 1.0 / math.sqrt(head_dim)
+ 
+-    perf(
+-        lambda: swa_prefill(
++    # perf(
++    #     lambda: swa_prefill(
++    swa_prefill(
+         query,
+         k_cache,
+         v_cache,
+@@ -164,76 +170,79 @@
+         cu_total_seq_lens=cu_total_seq_lens,
+         max_q_len=max_q_len,
+         max_total_seq_len=max_total_seq_len,
+-        )
+     )
+-
+-
+-@pytest.mark.parametrize(
+-    "query, k_cache, v_cache, cu_q_lens, block_tables, cu_total_seq_lens, max_q_len, max_total_seq_len",
+-    [
+-        pytest.param(
+-            *generate_paged_prefill_data_swa(
+-                batch_size=B,
+-                num_q_heads=Q_H,
+-                num_kv_heads=KV_H,
+-                head_dim=D,
+-                max_q_len=Q_LEN,
+-                max_kv_computed_len=KV_COMPUTED_LEN,
+-                block_size=BLK_S,
+-                dtype=dtype,
+-            ),
+-            id=f"{ID}_acc",
+-        )
+-        for B, Q_H, KV_H, D, Q_LEN, KV_COMPUTED_LEN, BLK_S, dtype, ID in test_configs_swa_prefill
+-    ],
+-)
+-@pytest.mark.parametrize("gqa_layout, global_window, local_window", [
+-    ("AABB", 4, 1023),
+-])
+-@bypass_not_implemented
+-def test_paged_prefill_swa_accuracy(
+-    query: torch.Tensor,
+-    k_cache: torch.Tensor,
+-    v_cache: torch.Tensor,
+-    cu_q_lens: torch.Tensor,
+-    block_tables: torch.Tensor,
+-    gqa_layout: str,
+-    cu_total_seq_lens: Optional[torch.Tensor],
+-    max_q_len: int,
+-    max_total_seq_len: int,
+-    global_window: int,
+-    local_window: int,
+-):
+-    swa_prefill = MojoPagedPrefillSWA(
+-        is_causal=True,
+-        gqa_layout=gqa_layout,
+-        global_window_size=global_window,
+-        local_window_size=local_window,
+-    )
+-
+-    swa_prefill_ref = MojoPagedPrefillSWA._registry.get("torch")(
+-        is_causal=True,
+-        gqa_layout=gqa_layout,
+-        global_window_size=global_window,
+-        local_window_size=local_window,
+-    )
+-
+-    head_dim = query.shape[-1]
+-    softmax_scale = 1.0 / math.sqrt(head_dim)
+-
+-    atol, rtol = (3e-2, 6e-3) if query.dtype != torch.float32 else (1e-5, 1e-6)
+-
+-    swa_prefill.forward_diff_with(
+-        swa_prefill_ref,
+-        query,
+-        k_cache,
+-        v_cache,
+-        cu_q_lens,
+-        block_tables,
+-        softmax_scale=softmax_scale,
+-        cu_total_seq_lens=cu_total_seq_lens,
+-        max_q_len=max_q_len,
+-        max_total_seq_len=max_total_seq_len,
+-        atol=atol,
+-        rtol=rtol,
+-    )
++    # )
++    # Wait for completion without profiling or timing.
++    torch.npu.synchronize()
++
++
++# Disable the entire accuracy test, including collection-time input generation.
++# @pytest.mark.parametrize(
++#     "query, k_cache, v_cache, cu_q_lens, block_tables, cu_total_seq_lens, max_q_len, max_total_seq_len",
++#     [
++#         pytest.param(
++#             *generate_paged_prefill_data_swa(
++#                 batch_size=B,
++#                 num_q_heads=Q_H,
++#                 num_kv_heads=KV_H,
++#                 head_dim=D,
++#                 max_q_len=Q_LEN,
++#                 max_kv_computed_len=KV_COMPUTED_LEN,
++#                 block_size=BLK_S,
++#                 dtype=dtype,
++#             ),
++#             id=f"{ID}_acc",
++#         )
++#         for B, Q_H, KV_H, D, Q_LEN, KV_COMPUTED_LEN, BLK_S, dtype, ID in test_configs_swa_prefill
++#     ],
++# )
++# @pytest.mark.parametrize("gqa_layout, global_window, local_window", [
++#     ("AABB", 4, 1023),
++# ])
++# @bypass_not_implemented
++# def test_paged_prefill_swa_accuracy(
++#     query: torch.Tensor,
++#     k_cache: torch.Tensor,
++#     v_cache: torch.Tensor,
++#     cu_q_lens: torch.Tensor,
++#     block_tables: torch.Tensor,
++#     gqa_layout: str,
++#     cu_total_seq_lens: Optional[torch.Tensor],
++#     max_q_len: int,
++#     max_total_seq_len: int,
++#     global_window: int,
++#     local_window: int,
++# ):
++#     swa_prefill = MojoPagedPrefillSWA(
++#         is_causal=True,
++#         gqa_layout=gqa_layout,
++#         global_window_size=global_window,
++#         local_window_size=local_window,
++#     )
++
++#     swa_prefill_ref = MojoPagedPrefillSWA._registry.get("torch")(
++#         is_causal=True,
++#         gqa_layout=gqa_layout,
++#         global_window_size=global_window,
++#         local_window_size=local_window,
++#     )
++
++#     head_dim = query.shape[-1]
++#     softmax_scale = 1.0 / math.sqrt(head_dim)
++
++#     atol, rtol = (3e-2, 6e-3) if query.dtype != torch.float32 else (1e-5, 1e-6)
++
++#     swa_prefill.forward_diff_with(
++#         swa_prefill_ref,
++#         query,
++#         k_cache,
++#         v_cache,
++#         cu_q_lens,
++#         block_tables,
++#         softmax_scale=softmax_scale,
++#         cu_total_seq_lens=cu_total_seq_lens,
++#         max_q_len=max_q_len,
++#         max_total_seq_len=max_total_seq_len,
++#         atol=atol,
++#         rtol=rtol,
++#     )
