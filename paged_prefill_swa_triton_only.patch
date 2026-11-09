@@ -11,20 +11,7 @@ diff --git a/mojo_opset/tests/specific_shape_perf_acc/test_paged_prefill_swa_950
  @bypass_not_implemented
  def test_paged_prefill_swa(
      query: torch.Tensor,
-@@ -144,7 +145,11 @@
-     global_window: int,
-     local_window: int,
- ):
--    swa_prefill = MojoPagedPrefillSWA(
-+    # Select Triton explicitly; registry lookup can otherwise fall back.
-+    swa_prefill_cls = MojoPagedPrefillSWA.get_backend_impl("ttx")
-+    assert swa_prefill_cls._backend == "ttx", "Triton (ttx) backend is not registered"
-+    # swa_prefill = MojoPagedPrefillSWA(
-+    swa_prefill = swa_prefill_cls(
-         is_causal=True,
-         gqa_layout=gqa_layout,
-         local_window_size=local_window,
-@@ -153,8 +158,9 @@
+@@ -153,8 +154,9 @@
      head_dim = query.shape[-1]
      softmax_scale = 1.0 / math.sqrt(head_dim)
  
@@ -36,7 +23,7 @@ diff --git a/mojo_opset/tests/specific_shape_perf_acc/test_paged_prefill_swa_950
          query,
          k_cache,
          v_cache,
-@@ -164,76 +170,79 @@
+@@ -164,76 +166,79 @@
          cu_total_seq_lens=cu_total_seq_lens,
          max_q_len=max_q_len,
          max_total_seq_len=max_total_seq_len,
